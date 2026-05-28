@@ -1,8 +1,16 @@
+import Image from "next/image";
+import { JetBrains_Mono } from "next/font/google";
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+});
+
 export default function DeveloperProfileMock() {
   const careers = [
     {
       company: '넥슨코리아',
       companyEn: 'Nexon Korea',
+      logo: '/ci/nexon_w_bg.png',
       role: 'Backend Engineer · 플랫폼API팀',
       period: '2022 — Present',
       desc: [
@@ -17,6 +25,7 @@ export default function DeveloperProfileMock() {
     {
       company: '잡코리아',
       companyEn: 'JobKorea',
+      logo: '/ci/jobkroea.png',
       role: 'Backend Developer',
       period: '2019 — 2022',
       desc: [
@@ -31,6 +40,7 @@ export default function DeveloperProfileMock() {
     {
       company: '더존비즈온',
       companyEn: 'Douzone Bizon',
+      logo: '/ci/douzone.png',
       role: 'Software Engineer',
       period: '2017 — 2019',
       desc: [
@@ -61,7 +71,7 @@ export default function DeveloperProfileMock() {
               </span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 text-right w-full">
               <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-none">
                 이상묵
               </h1>
@@ -71,19 +81,13 @@ export default function DeveloperProfileMock() {
               </div>
             </div>
 
-            <div className="space-y-3 pt-3">
+            <div className="space-y-3 pt-3 text-right">
               <p className="text-xl md:text-3xl font-semibold text-zinc-100 leading-tight">
-                실시간 세션 플랫폼 · 이벤트 기반 아키텍처 · 대규모 트래픽 처리
+                문제를 단순히 해결하는 것보다, 운영 가능한 구조로 만드는 과정에 관심이 많습니다.
               </p>
 
               <p className="text-sm md:text-base text-zinc-600 tracking-wide leading-relaxed">
                 Real-time Session Platform · Event-Driven Architecture · Large Scale Traffic Processing
-              </p>
-            </div>
-
-            <div className="pt-4 max-w-5xl">
-              <p className="text-zinc-400 leading-relaxed text-base md:text-lg whitespace-normal break-keep">
-                실시간 세션 처리와 대규모 트래픽 환경에서 플랫폼 아키텍처 중심의 문제 해결을 지향하는 백엔드 엔지니어.
               </p>
             </div>
 
@@ -132,18 +136,36 @@ export default function DeveloperProfileMock() {
             {careers.map((career) => (
               <div
                 key={career.company}
-                className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8"
+                className="relative rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8 lg:pb-28"
               >
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
                   <div className="space-y-4 max-w-3xl">
                     <div className="space-y-2">
-                      <div className="flex flex-col md:flex-row md:items-end gap-1 md:gap-3">
-                        <h3 className="text-2xl font-bold">
-                          {career.company}
-                        </h3>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="space-y-2">
+                          <div className="flex flex-wrap items-end gap-3">
+                            <h3 className="text-2xl font-bold">
+                              {career.company}
+                            </h3>
 
-                        <div className="text-sm text-zinc-500 tracking-wide">
-                          {career.companyEn}
+                            <div className="text-sm text-zinc-500 tracking-wide">
+                              {career.companyEn}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="h-16 w-16 rounded-2xl border border-zinc-200 bg-white p-2.5 shadow-lg shadow-black/20 lg:hidden shrink-0">
+                          <Image
+                            src={career.logo}
+                            alt={`${career.companyEn} logo`}
+                            width={96}
+                            height={96}
+                            className={`h-full w-full object-contain ${
+                              career.companyEn === 'JobKorea'
+                                ? 'scale-[1.4]'
+                                : ''
+                            }`}
+                          />
                         </div>
                       </div>
 
@@ -166,16 +188,30 @@ export default function DeveloperProfileMock() {
                     </ul>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 max-w-sm">
-                    {career.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 rounded-full bg-zinc-800 text-sm text-zinc-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="flex flex-col items-end gap-4 w-full lg:w-auto shrink-0">
+                    <div className="flex flex-wrap justify-end gap-2 lg:flex-nowrap lg:max-w-full">
+                      {career.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className={`px-3 py-1 rounded-full bg-zinc-800 text-sm text-zinc-200 whitespace-nowrap ${jetbrainsMono.className}`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                </div>
+
+                <div className="absolute right-6 bottom-6 hidden h-16 w-16 md:h-20 md:w-20 rounded-2xl border border-zinc-200 bg-white p-2.5 shadow-lg shadow-black/20 lg:block">
+                  <Image
+                    src={career.logo}
+                    alt={`${career.companyEn} logo`}
+                    width={96}
+                    height={96}
+                    className={`h-full w-full object-contain ${
+                      career.companyEn === 'JobKorea' ? 'scale-[1.4]' : ''
+                    }`}
+                  />
                 </div>
               </div>
             ))}
@@ -193,7 +229,7 @@ export default function DeveloperProfileMock() {
                   (tech) => (
                     <div
                       key={tech}
-                      className="px-4 py-2 rounded-2xl bg-zinc-800"
+                      className={`px-4 py-2 rounded-2xl bg-zinc-800 ${jetbrainsMono.className}`}
                     >
                       {tech}
                     </div>
@@ -213,12 +249,12 @@ export default function DeveloperProfileMock() {
                   'MSSQL',
                   'Redis',
                 ].map((tech) => (
-                  <div
-                    key={tech}
-                    className="px-4 py-2 rounded-2xl bg-zinc-800"
-                  >
-                    {tech}
-                  </div>
+                    <div
+                      key={tech}
+                      className={`px-4 py-2 rounded-2xl bg-zinc-800 ${jetbrainsMono.className}`}
+                    >
+                      {tech}
+                    </div>
                 ))}
               </div>
             </div>
