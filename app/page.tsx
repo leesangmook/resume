@@ -11,7 +11,7 @@ export default function DeveloperProfileMock() {
       company: '넥슨코리아',
       companyEn: 'Nexon Korea',
       logo: '/ci/nexon_w_bg.png',
-      role: 'Backend Engineer · 플랫폼API팀',
+      role: 'Backend Engineer',
       period: '2022 — Present',
       desc: [
         'C#/.NET 기반 TCP 서버, Nexon PC방 세션 시스템 개발 및 운영',
