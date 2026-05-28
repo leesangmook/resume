@@ -6,7 +6,7 @@ export default function DeveloperProfileMock() {
       role: 'Backend Engineer · 플랫폼API팀',
       period: '2022 — Present',
       desc: [
-        'C#/.NET 기반 Nexon PC방 세션 시스템 개발 및 운영',
+        'C#/.NET 기반 TCP 서버, Nexon PC방 세션 시스템 개발 및 운영',
         '대규모 실시간 게임 세션 및 과금 세션 처리',
         '게임별 PC방 접속 이벤트 및 세션 연동용 REST API 개발',
         'Kafka 기반 Event-Driven Architecture 설계 및 개발',
@@ -82,7 +82,7 @@ export default function DeveloperProfileMock() {
             </div>
 
             <div className="pt-4 max-w-5xl">
-              <p className="text-zinc-400 leading-relaxed text-base md:text-lg whitespace-nowrap overflow-hidden text-ellipsis">
+              <p className="text-zinc-400 leading-relaxed text-base md:text-lg whitespace-normal break-keep">
                 실시간 세션 처리와 대규모 트래픽 환경에서 플랫폼 아키텍처 중심의 문제 해결을 지향하는 백엔드 엔지니어.
               </p>
             </div>
